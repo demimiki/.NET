@@ -1,0 +1,27 @@
+﻿<Window x:Class="OrvosKliens.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OrvosKliens"
+        mc:Ignorable="d"
+        Title="Orvos" Height="400" Width="730" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" FontSize="14" FontFamily="Calibri">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="ModifyButton" Content="Módosít" HorizontalAlignment="Left" Margin="30,0,0,60" Width="120" Height="32" VerticalAlignment="Bottom" Click="ModifyButton_Click"/>
+        <Button x:Name="DeleteButton" Content="Törlés" HorizontalAlignment="Left" Margin="30,0,0,20" Width="120" Height="32" VerticalAlignment="Bottom" Click="DeleteButton_Click"/>
+        <ListView x:Name="listView" Margin="200,20,20,20" SelectionChanged="listView_SelectionChanged"/>
+        <TextBox x:Name="nevTextBox" HorizontalAlignment="Left" Height="23" Margin="30,40,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="cimTextBox" HorizontalAlignment="Left" Height="23" Margin="30,90,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="tajszamTextBox" HorizontalAlignment="Left" Height="23" Margin="30,140,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="panaszTextBox" HorizontalAlignment="Left" Height="23" Margin="30,190,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="nevLabel" Content="Név" HorizontalAlignment="Left" Margin="25,15,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="cimLabel" Content="Cím" HorizontalAlignment="Left" Margin="25,65,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="tajszamLabel" Content="Tajszám" HorizontalAlignment="Left" Margin="25,115,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="panaszLabel" Content="Panasz" HorizontalAlignment="Left" Margin="25,165,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="idoTextBox" HorizontalAlignment="Left" Height="23" Margin="30,241,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <Label x:Name="idoLabel" Content="Módosítás dátuma" HorizontalAlignment="Left" Margin="25,215,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Window>
