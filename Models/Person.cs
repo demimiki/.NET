@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +16,7 @@ namespace OrvosKliens.Models
 
         public override string ToString()
         {
-            return $"{Nev} {Tajszam} {Idopont:yyyy.MM.dd. hh:mm:ss}";
+            return $"{Nev} {Tajszam} {Idopont:yyyy.MM.dd. HH:mm:ss}";
         }
     }
 }
