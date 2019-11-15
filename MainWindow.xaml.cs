@@ -65,6 +65,11 @@ namespace OrvosKliens
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             DeletePerson();
+            nevTextBox.Text = "";
+            cimTextBox.Text = "";
+            tajszamTextBox.Text = "";
+            panaszTextBox.Text = "";
+            idoTextBox.Text = "";
         }
 
         private void DeletePerson()
@@ -80,6 +85,7 @@ namespace OrvosKliens
                         if (!result.IsSuccessStatusCode)
                         {
                             MessageBox.Show("Hiba törlés közben!","Hiba!",MessageBoxButton.OK,MessageBoxImage.Information);
+                            return;
                         }
                     }
                 }
@@ -101,6 +107,12 @@ namespace OrvosKliens
             var tajszam = tajszamTextBox.Text;
             var panasz = panaszTextBox.Text;
             var idopont = DateTime.Now;
+
+            nevTextBox.Text = "";
+            cimTextBox.Text = "";
+            tajszamTextBox.Text = "";
+            panaszTextBox.Text = "";
+            idoTextBox.Text = "";
 
             if (string.IsNullOrEmpty(nev) || string.IsNullOrEmpty(cim) || string.IsNullOrEmpty(tajszam))
             {
@@ -131,39 +143,42 @@ namespace OrvosKliens
 
         private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var selected = listView.SelectedIndex;
-            var people = JsonConvert.DeserializeObject<IEnumerable<Person>>(null);
-            try
+            if (listView.SelectedIndex != -1)
             {
-                using (var httpClient = new HttpClient())
+                var selected = listView.SelectedIndex;
+                try
                 {
-                    string output = "http://localhost:80/person/" + selected;
-                    var result = httpClient.GetAsync(output).Result;
+                    using (var httpClient = new HttpClient())
+                    {
+                        string output = "http://localhost:80/person/";
+                        var result = httpClient.GetAsync(output).Result;
 
-                    string json = result.Content.ReadAsStringAsync().Result;
-                    people = JsonConvert.DeserializeObject<IEnumerable<Person>>(json);
+                        string json = result.Content.ReadAsStringAsync().Result;
+                        var people = JsonConvert.DeserializeObject<IEnumerable<Person>>(json);
+
+                        Person[] j = people.ToArray<Person>();
+                        nevTextBox.Text = j[selected].Nev;
+                        cimTextBox.Text = j[selected].Lakcim;
+                        tajszamTextBox.Text = j[selected].Tajszam;
+                        panaszTextBox.Text = j[selected].Panasz;
+                        idoTextBox.Text = ToStringDate(j[selected].Idopont);
+                    }
+                }
+                catch (System.AggregateException)
+                {
+                    if (start == true)
+                    {
+                        MessageBox.Show("Nincs kapcsolat, indítás sikertelen.", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+                        Environment.Exit(-1);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nincs kapcsolat!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        listView.ItemsSource = null;
+                        return;
+                    }
                 }
             }
-            catch (System.AggregateException)
-            {
-                if (start == true)
-                {
-                    MessageBox.Show("Nincs kapcsolat, indítás sikertelen.", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
-                    Environment.Exit(-1);
-                }
-                else
-                {
-                    MessageBox.Show("Nincs kapcsolat!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                    listView.ItemsSource = null;
-                    return;
-                }
-            }
-            Person[] j=people.ToArray();
-            nevTextBox.Text = j[0].Nev;
-            cimTextBox.Text = j[0].Lakcim;
-            tajszamTextBox.Text = j[0].Tajszam;
-            panaszTextBox.Text = j[0].Panasz;
-            idoTextBox.Text = ToStringDate(j[0].Idopont);
         }
 
         public string ToStringDate(DateTime dt)
