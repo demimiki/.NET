@@ -183,7 +183,7 @@ namespace OrvosKliens
 
         public string ToStringDate(DateTime dt)
         {
-            return $"{dt:yyyy.MM.dd. hh:mm:ss}";
+            return $"{dt:yy.MM.dd. HH:mm:ss}";
         }
     }
 }
