@@ -23,5 +23,6 @@
         <Label x:Name="panaszLabel" Content="Panasz" HorizontalAlignment="Left" Margin="25,165,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="idoTextBox" HorizontalAlignment="Left" Height="23" Margin="30,241,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
         <Label x:Name="idoLabel" Content="Módosítás dátuma" HorizontalAlignment="Left" Margin="25,215,0,0" VerticalAlignment="Top"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="23" Margin="164,40,0,0" VerticalAlignment="Top" Width="23" Source="refresh-button.png" MouseDown="image_MouseDown"/>
     </Grid>
 </Window>
