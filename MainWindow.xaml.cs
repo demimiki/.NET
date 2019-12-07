@@ -32,6 +32,7 @@ namespace OrvosKliens
             start = false;
         }
 
+
         public void GetPeople()
         {
             try
@@ -184,6 +185,11 @@ namespace OrvosKliens
         public string ToStringDate(DateTime dt)
         {
             return $"{dt:yy.MM.dd. HH:mm:ss}";
+        }
+
+        private void image_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            GetPeople();
         }
     }
 }
