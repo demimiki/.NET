@@ -191,5 +191,6 @@ namespace OrvosKliens
         {
             GetPeople();
         }
+        
     }
 }
