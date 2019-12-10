@@ -12,7 +12,23 @@
         </Grid.ColumnDefinitions>
         <Button x:Name="ModifyButton" Content="Módosít" HorizontalAlignment="Left" Margin="30,0,0,60" Width="120" Height="32" VerticalAlignment="Bottom" Click="ModifyButton_Click"/>
         <Button x:Name="DeleteButton" Content="Törlés" HorizontalAlignment="Left" Margin="30,0,0,20" Width="120" Height="32" VerticalAlignment="Bottom" Click="DeleteButton_Click"/>
-        <ListView x:Name="listView" Margin="200,20,20,20" SelectionChanged="listView_SelectionChanged"/>
+        <ListView x:Name="listView" Margin="200,20,20,20" SelectionChanged="listView_SelectionChanged">
+            <ListView.View>
+                <GridView AllowsColumnReorder="False">
+                    <GridViewColumn DisplayMemberBinding=
+                          "{Binding Path=Nev}" 
+                      Header="Név" Width="200"/>
+
+                    <GridViewColumn DisplayMemberBinding=
+                          "{Binding Path=Tajszam}" 
+                      Header="Tajszám" Width="120"/>
+
+                    <GridViewColumn DisplayMemberBinding=
+                          "{Binding Path=Idopont}" 
+                      Header="Módosítás dátuma" Width="160"/>
+                </GridView>
+            </ListView.View>
+            </ListView>
         <TextBox x:Name="nevTextBox" HorizontalAlignment="Left" Height="23" Margin="30,40,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="cimTextBox" HorizontalAlignment="Left" Height="23" Margin="30,90,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="tajszamTextBox" HorizontalAlignment="Left" Height="23" Margin="30,140,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
