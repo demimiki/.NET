@@ -109,17 +109,17 @@ namespace OrvosKliens
             var panasz = panaszTextBox.Text;
             var idopont = DateTime.Now;
 
-            nevTextBox.Text = "";
-            cimTextBox.Text = "";
-            tajszamTextBox.Text = "";
-            panaszTextBox.Text = "";
-            idoTextBox.Text = "";
-
             if (string.IsNullOrEmpty(nev) || string.IsNullOrEmpty(cim) || string.IsNullOrEmpty(tajszam))
             {
                 MessageBox.Show("Invalid data!");
                 return;
             }
+			
+			nevTextBox.Text = "";
+            cimTextBox.Text = "";
+            tajszamTextBox.Text = "";
+            panaszTextBox.Text = "";
+            idoTextBox.Text = "";
 
             var person = new Person { Nev = nev, Lakcim = cim,  Tajszam= tajszam, Panasz=panasz, Idopont=idopont};
 
