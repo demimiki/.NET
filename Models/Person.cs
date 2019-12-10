@@ -13,10 +13,6 @@ namespace OrvosKliens.Models
         public string Tajszam { get; set; }
         public string Panasz { get; set; }
         public DateTime Idopont { get; set; }
-
-        public override string ToString()
-        {
-            return $"{Nev} {Tajszam} {Idopont:yyyy.MM.dd. HH:mm:ss}";
-        }
     }
+
 }
